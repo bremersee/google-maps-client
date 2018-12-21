@@ -16,9 +16,6 @@
 
 package org.bremersee.google.maps.model;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -37,9 +34,9 @@ import org.springframework.util.StringUtils;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Builder
-public class GeocodingRequest {
+public class GeocodingRequest extends AbstractRequest {
 
   /**
    * The bounding box of the viewport within which to bias geocode results more prominently. This
@@ -79,12 +76,7 @@ public class GeocodingRequest {
 
   private String administrativeArea;
 
-  /**
-   * Build the request parameter map.
-   *
-   * @param urlEncode if {@code true}, the parameter values will be encoded, otherwise not.
-   * @return the request parameter map
-   */
+  @Override
   public MultiValueMap<String, String> buildParameters(final boolean urlEncode) {
     final MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
     if (bounds != null && bounds.getNortheast() != null && bounds.getSouthwest() != null) {
@@ -135,28 +127,6 @@ public class GeocodingRequest {
       map.set("components", encodeQueryParameter(sb.toString(), urlEncode));
     }
     return map;
-  }
-
-  /**
-   * Encode query parameter.
-   *
-   * @param value the parameter value
-   * @param encode if {@code true} the parameter will be url encoded, otherwise not
-   * @return the (encoded) parameter value
-   */
-  private String encodeQueryParameter(final String value, final boolean encode) {
-    if (!StringUtils.hasText(value)) {
-      return "";
-    }
-    if (encode) {
-      try {
-        return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
-
-      } catch (UnsupportedEncodingException e) {
-        // ignore
-      }
-    }
-    return value;
   }
 
 }

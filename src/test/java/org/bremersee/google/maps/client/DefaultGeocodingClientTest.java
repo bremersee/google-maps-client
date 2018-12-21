@@ -19,6 +19,7 @@ package org.bremersee.google.maps.client;
 import java.util.List;
 import java.util.Locale;
 import org.bremersee.exception.ServiceException;
+import org.bremersee.google.maps.GoogleMapsProperties;
 import org.bremersee.google.maps.model.GeocodingRequest;
 import org.bremersee.google.maps.model.GeocodingResult;
 import org.junit.Assert;
@@ -56,7 +57,8 @@ public class DefaultGeocodingClientTest extends Setup {
         .query("Hauptstraße 56, Peine")
         .build();
 
-    final List<GeocodingResult> res = geocodingClient.geocode(req);
+    final List<GeocodingResult> res = new DefaultGeocodingClient(new GoogleMapsProperties())
+        .geocode(req);
     Assert.assertNotNull(res);
   }
 
