@@ -18,13 +18,13 @@ package org.bremersee.google.maps.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.bremersee.plain.model.UnknownAware;
 
 /**
  * A result from a Geocoding API call.
@@ -36,11 +36,12 @@ import org.bremersee.plain.model.UnknownAware;
     getterVisibility = Visibility.NONE,
     isGetterVisibility = Visibility.NONE,
     setterVisibility = Visibility.NONE)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
-public class GeocodingResult extends UnknownAware {
+public class GeocodingResult {
 
   /**
    * The separate address components in this result.
