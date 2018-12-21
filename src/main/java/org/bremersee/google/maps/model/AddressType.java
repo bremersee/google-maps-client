@@ -20,10 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The Address types. Please see <a href="https://developers.google.com/maps/documentation/geocoding/intro#Types">Address
- * Types and Address Component Types</a> for more detail. Some addresses contain additional place
- * categories. Please see <a href="https://developers.google.com/places/supported_types">Place
- * Types</a> for more detail.
+ * The address types.
+ *
+ * @author Christian Bremer
  */
 public enum AddressType {
 

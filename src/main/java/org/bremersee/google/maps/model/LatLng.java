@@ -29,6 +29,8 @@ import lombok.Setter;
 
 /**
  * A place on Earth, represented by a latitude/longitude pair.
+ *
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,
@@ -54,19 +56,9 @@ public class LatLng {
   @JsonProperty("lng")
   private double lng;
 
-  /**
-   * URL value of this point.
-   *
-   * @return the URL value of this point
-   */
-  public String toUrlValue() {
-    // Enforce Locale to English for double to string conversion
-    return String.format(Locale.ENGLISH, "%.8f,%.8f", lat, lng);
-  }
-
   @Override
-  public String toString() {
-    return toUrlValue();
+  public final String toString() {
+    return String.format(Locale.ENGLISH, "%.8f,%.8f", lat, lng);
   }
 
   @Override

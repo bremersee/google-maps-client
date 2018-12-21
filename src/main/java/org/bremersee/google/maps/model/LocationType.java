@@ -17,9 +17,9 @@
 package org.bremersee.google.maps.model;
 
 /**
- * Location types for a reverse geocoding request. Please see
- * <a href="https://developers.google.com/maps/documentation/geocoding/start#reverse">Reverse
- * Geocoding</a> for more detail.
+ * Location types for a reverse geocoding request.
+ *
+ * @author Christian Bremer
  */
 public enum LocationType {
 

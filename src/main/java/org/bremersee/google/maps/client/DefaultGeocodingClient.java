@@ -18,9 +18,11 @@ package org.bremersee.google.maps.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URL;
+import java.util.List;
 import org.bremersee.google.maps.GoogleMapsProperties;
 import org.bremersee.google.maps.model.GeocodingRequest;
 import org.bremersee.google.maps.model.GeocodingResponse;
+import org.bremersee.google.maps.model.GeocodingResult;
 import org.springframework.util.MultiValueMap;
 
 /**
@@ -47,17 +49,22 @@ public class DefaultGeocodingClient extends AbstractDefaultClient
   public DefaultGeocodingClient(
       GoogleMapsProperties properties,
       ObjectMapper objectMapper) {
-    super(properties);
+    this(properties);
     setObjectMapper(objectMapper);
   }
 
   @Override
-  public GeocodingResponse geocode(final GeocodingRequest request) {
+  public List<GeocodingResult> geocode(final GeocodingRequest request) {
 
     final String baseUri = getProperties().getGeocodeUri();
     final MultiValueMap<String, String> params = request.buildParameters(true);
     final URL url = buildUrl(baseUri, params);
-    return call(url, HttpMethod.GET, null, GeocodingResponse.class);
+    final GeocodingResponse response = call(
+        url,
+        HttpMethod.GET,
+        null,
+        GeocodingResponse.class);
+    return parseGeocodingResponse(response);
   }
 
 }

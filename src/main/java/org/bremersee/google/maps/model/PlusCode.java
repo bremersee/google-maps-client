@@ -27,6 +27,8 @@ import lombok.ToString;
 
 /**
  * A Plus Code encoded location reference.
+ *
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,

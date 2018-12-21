@@ -26,7 +26,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The geometry of a Geocoding result.
+ * The geometry of a geocoding result.
+ *
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,

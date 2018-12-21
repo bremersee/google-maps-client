@@ -28,6 +28,8 @@ import org.bremersee.plain.model.UnknownAware;
 
 /**
  * A result from a Geocoding API call.
+ *
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,

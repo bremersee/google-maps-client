@@ -16,13 +16,15 @@
 
 package org.bremersee.google.maps.client;
 
+import java.util.List;
 import java.util.Locale;
+import org.bremersee.exception.ServiceException;
 import org.bremersee.google.maps.model.GeocodingRequest;
-import org.bremersee.google.maps.model.GeocodingResponse;
+import org.bremersee.google.maps.model.GeocodingResult;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.util.StringUtils;
 
 /**
  * Test of the default geocoding client.
@@ -43,37 +45,19 @@ public class DefaultGeocodingClientTest extends Setup {
   }
 
   /**
-   * Test geocode.
-   *
-   * @throws Exception the exception
+   * Test geocode failure.
    */
-  @Test
-  public void testGeocode() throws Exception {
-    if (!StringUtils.hasText(properties.getKey())) {
-      return;
-    }
-
+  @Ignore
+  @Test(expected = ServiceException.class)
+  public void testGeocodeFailure() {
     final GeocodingRequest req = GeocodingRequest
         .builder()
         .language(Locale.GERMANY)
         .query("Hauptstraße 56, Peine")
         .build();
 
-    final GeocodingResponse res = geocodingClient.geocode(req);
+    final List<GeocodingResult> res = geocodingClient.geocode(req);
     Assert.assertNotNull(res);
-
-    System.out.println("### Geocoding response for query 'Hauptstraße 56, Peine':");
-    System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(res));
-
-    /*
-    Assert.assertTrue(res.hasResults());
-    Assert.assertTrue(
-        res.getResults().stream().anyMatch(geocodeResult -> geocodeResult.getAddress() != null
-            && "31228".equalsIgnoreCase(geocodeResult.getAddress().getPostalCode())
-            && geocodeResult.getAddress().getStreetName() != null
-            && geocodeResult.getAddress().getStreetName().contains("Hauptstraße")
-            && "56".equalsIgnoreCase(geocodeResult.getAddress().getStreetNumber())));
-            */
   }
 
 }

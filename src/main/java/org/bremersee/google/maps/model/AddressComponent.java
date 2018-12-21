@@ -27,11 +27,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The parts of an address.
+ * An address component.
  *
- * <p>See <a href="https://developers.google.com/maps/documentation/geocoding/intro#Types">Address
- * Types and Address Component Types</a> in the <a href="https://developers.google.com/maps/documentation/geocoding/intro">Google
- * Maps Geocoding API Developer's Guide</a> for more detail.
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,

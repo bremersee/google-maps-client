@@ -16,7 +16,11 @@
 
 package org.bremersee.google.maps.model;
 
+import lombok.Getter;
+
 /**
+ * The geocoding status.
+ *
  * @author Christian Bremer
  */
 public enum GeocodingStatus {
@@ -25,13 +29,13 @@ public enum GeocodingStatus {
    * Indicates that no errors occurred; the address was successfully parsed and at least one geocode
    * was returned.
    */
-  OK,
+  OK("OK"),
 
   /**
    * Indicates that the geocode was successful but returned no results. This may occur if the
    * geocoder was passed a non-existent address.
    */
-  ZERO_RESULTS,
+  ZERO_RESULTS("No results."),
 
   /**
    * Indicates any of the following:
@@ -43,26 +47,35 @@ public enum GeocodingStatus {
    * expired).
    * </ul>
    */
-  OVER_DAILY_LIMIT,
+  OVER_DAILY_LIMIT("The API key is missing, "
+      + "billing has not been enabled on your account, "
+      + "a self-imposed usage cap has been exceeded or "
+      + "the provided method of payment is no longer valid."),
 
   /**
    * Indicates that you are over your quota.
    */
-  OVER_QUERY_LIMIT,
+  OVER_QUERY_LIMIT("You are over your quota."),
 
   /**
    * Indicates that your request was denied.
    */
-  REQUEST_DENIED,
+  REQUEST_DENIED("Your request was denied."),
 
   /**
    * Generally indicates that the query (address, components or latlng) is missing.
    */
-  INVALID_REQUEST,
+  INVALID_REQUEST("The query (address, components or latlng) is missing."),
 
   /**
    * Indicates that the request could not be processed due to a server error. The request may
    * succeed if you try again.
    */
-  UNKNOWN_ERROR
-}
+  UNKNOWN_ERROR("The request could not be processed due to a server error.");
+
+  @Getter
+  private String message;
+
+  GeocodingStatus(String message) {
+    this.message = message;
+  }}

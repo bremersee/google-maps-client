@@ -1,4 +1,4 @@
-NOMINATIM CLIENT ${project.version}
+GOOGLE MAPS CLIENT ${project.version}
 Copyright (c) 2018 Christian Bremer
 
 This product is licensed to you under the Apache License, Version 2.0

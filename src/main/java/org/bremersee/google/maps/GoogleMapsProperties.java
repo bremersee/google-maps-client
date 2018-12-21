@@ -22,7 +22,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The nominatim properties.
+ * The google maps client properties.
  *
  * @author Christian Bremer
  */
@@ -30,10 +30,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @SuppressWarnings("WeakerAccess")
 public class GoogleMapsProperties {
-
-  public static final String DEFAULT_SEARCH_URI = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=";
-
-  public static final String DEFAULT_REVERSE_URI = "https://nominatim.openstreetmap.org/reverse";
 
   public static final String DEFAULT_GEOCODE_URI = "https://maps.googleapis.com/maps/api/geocode/json";
 
@@ -44,14 +40,6 @@ public class GoogleMapsProperties {
   @Getter
   @Setter
   private String geocodeUri = DEFAULT_GEOCODE_URI;
-
-  @Getter
-  @Setter
-  private String searchUri = DEFAULT_SEARCH_URI;
-
-  @Getter
-  @Setter
-  private String reverseUri = DEFAULT_REVERSE_URI;
 
   @Getter
   @Setter

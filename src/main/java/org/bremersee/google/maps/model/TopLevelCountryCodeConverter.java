@@ -23,9 +23,11 @@ import java.util.Map;
 import org.springframework.util.StringUtils;
 
 /**
+ * The top level country code converter.
+ *
  * @author Christian Bremer
  */
-public abstract class TopLevelCountryCodeConverter {
+abstract class TopLevelCountryCodeConverter {
 
   private static final Map<String, String> exceptions;
 
@@ -38,9 +40,15 @@ public abstract class TopLevelCountryCodeConverter {
   private TopLevelCountryCodeConverter() {
   }
 
-  public static String fromLocale(Locale locale, String defaultTopLevelCountry) {
+  /**
+   * Converts a {@link Locale} into a top level country code.
+   *
+   * @param locale the locale
+   * @return the top level country code
+   */
+  static String fromLocale(Locale locale) {
     if (locale == null || !StringUtils.hasText(locale.getCountry())) {
-      return defaultTopLevelCountry;
+      return null;
     }
     final String countryCode = locale.getCountry().toLowerCase();
     return exceptions.getOrDefault(countryCode, countryCode);

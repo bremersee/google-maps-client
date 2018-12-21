@@ -93,8 +93,8 @@ public class GeocodingRequest {
     if (language != null && StringUtils.hasText(language.getLanguage())) {
       map.set("language", language.getLanguage());
     }
-    if (TopLevelCountryCodeConverter.fromLocale(region, null) != null) {
-      map.set("region", TopLevelCountryCodeConverter.fromLocale(region, null));
+    if (TopLevelCountryCodeConverter.fromLocale(region) != null) {
+      map.set("region", TopLevelCountryCodeConverter.fromLocale(region));
     }
     if (StringUtils.hasText(query)) {
       map.set("address", encodeQueryParameter(query, urlEncode));

@@ -16,12 +16,12 @@
 
 package org.bremersee.google.maps.client;
 
-import org.bremersee.google.maps.model.GeocodingResponse;
-import reactor.core.publisher.Mono;
+import org.bremersee.google.maps.model.GeocodingResult;
+import reactor.core.publisher.Flux;
 
 /**
  * @author Christian Bremer
  */
-public interface ReactiveGeocodingClient extends GeocodingClient<Mono<GeocodingResponse>> {
+public interface ReactiveGeocodingClient extends GeocodingClient<Flux<GeocodingResult>> {
 
 }

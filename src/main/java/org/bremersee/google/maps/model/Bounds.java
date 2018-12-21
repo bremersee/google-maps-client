@@ -26,6 +26,8 @@ import lombok.Setter;
 
 /**
  * The northeast and southwest points that delineate the outer bounds of a map.
+ *
+ * @author Christian Bremer
  */
 @JsonAutoDetect(
     fieldVisibility = Visibility.ANY,

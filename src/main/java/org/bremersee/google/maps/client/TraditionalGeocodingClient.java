@@ -16,11 +16,12 @@
 
 package org.bremersee.google.maps.client;
 
-import org.bremersee.google.maps.model.GeocodingResponse;
+import java.util.List;
+import org.bremersee.google.maps.model.GeocodingResult;
 
 /**
  * @author Christian Bremer
  */
-public interface TraditionalGeocodingClient extends GeocodingClient<GeocodingResponse> {
+public interface TraditionalGeocodingClient extends GeocodingClient<List<GeocodingResult>> {
 
 }

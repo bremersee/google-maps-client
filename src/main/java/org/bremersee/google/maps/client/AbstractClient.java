@@ -23,12 +23,15 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.bremersee.exception.ServiceException;
 import org.bremersee.google.maps.GoogleMapsProperties;
 import org.bremersee.google.maps.exception.ErrorCodeConstants;
+import org.bremersee.google.maps.model.GeocodingResponse;
+import org.bremersee.google.maps.model.GeocodingResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
@@ -102,6 +105,20 @@ public class AbstractClient {
     } catch (final MalformedURLException e) {
       throw new ServiceException(
           HttpStatus.INTERNAL_SERVER_ERROR, ErrorCodeConstants.MALFORMED_URL, e);
+    }
+  }
+
+  protected List<GeocodingResult> parseGeocodingResponse(GeocodingResponse response) {
+    switch (response.getStatus()) {
+      case OK:
+      case ZERO_RESULTS:
+        return response.getResults();
+      default:
+
+        throw new ServiceException(
+            500,
+            response.getStatus().getMessage(),
+            "GOOGLE_MAPS_CLIENT:" + response.getStatus().name());
     }
   }
 }
