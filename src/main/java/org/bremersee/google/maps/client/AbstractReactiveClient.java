@@ -30,6 +30,7 @@ import org.springframework.web.reactive.function.client.WebClient.Builder;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public class AbstractReactiveClient extends AbstractClient {
 
   private WebClient.Builder webClientBuilder;
@@ -39,8 +40,8 @@ public class AbstractReactiveClient extends AbstractClient {
   /**
    * Instantiates a new abstract client.
    *
-   * @param properties the properties
-   * @param webClientBuilder the web client builder
+   * @param properties            the properties
+   * @param webClientBuilder      the web client builder
    * @param webClientErrorDecoder the web client error decoder
    */
   protected AbstractReactiveClient(

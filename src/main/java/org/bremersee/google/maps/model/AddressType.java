@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("unused")
 public enum AddressType {
 
   /**
@@ -128,10 +129,25 @@ public enum AddressType {
    * civil entity. Larger numbers indicate a smaller geographic area.
    */
   SUBLOCALITY("sublocality"),
+  /**
+   * Sublocality level 1 address type.
+   */
   SUBLOCALITY_LEVEL_1("sublocality_level_1"),
+  /**
+   * Sublocality level 2 address type.
+   */
   SUBLOCALITY_LEVEL_2("sublocality_level_2"),
+  /**
+   * Sublocality level 3 address type.
+   */
   SUBLOCALITY_LEVEL_3("sublocality_level_3"),
+  /**
+   * Sublocality level 4 address type.
+   */
   SUBLOCALITY_LEVEL_4("sublocality_level_4"),
+  /**
+   * Sublocality level 5 address type.
+   */
   SUBLOCALITY_LEVEL_5("sublocality_level_5"),
 
   /**
@@ -693,11 +709,22 @@ public enum AddressType {
     return addressType;
   }
 
+  /**
+   * Gets value.
+   *
+   * @return the value
+   */
   @JsonValue
   public String getValue() {
     return addressType;
   }
 
+  /**
+   * From value address type.
+   *
+   * @param value the value
+   * @return the address type
+   */
   @JsonCreator
   public static AddressType fromValue(String value) {
     for (AddressType type : AddressType.values()) {

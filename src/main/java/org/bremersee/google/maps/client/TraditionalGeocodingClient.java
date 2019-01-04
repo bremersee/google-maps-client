@@ -20,8 +20,11 @@ import java.util.List;
 import org.bremersee.google.maps.model.GeocodingResult;
 
 /**
+ * The traditional geocoding client interface.
+ *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public interface TraditionalGeocodingClient extends GeocodingClient<List<GeocodingResult>> {
 
 }

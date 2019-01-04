@@ -32,6 +32,7 @@ import org.bremersee.google.maps.GoogleMapsProperties;
 import org.bremersee.google.maps.exception.ErrorCodeConstants;
 import org.bremersee.google.maps.model.GeocodingResponse;
 import org.bremersee.google.maps.model.GeocodingResult;
+import org.bremersee.google.maps.model.GeocodingStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
@@ -41,6 +42,7 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public class AbstractClient {
 
   @Getter(AccessLevel.PROTECTED)
@@ -80,7 +82,7 @@ public class AbstractClient {
    * Build the request url.
    *
    * @param baseUri the base uri
-   * @param params the params
+   * @param params  the params
    * @return the url
    */
   protected URL buildUrl(final String baseUri, final MultiValueMap<String, String> params) {
@@ -108,8 +110,17 @@ public class AbstractClient {
     }
   }
 
-  protected List<GeocodingResult> parseGeocodingResponse(GeocodingResponse response) {
-    switch (response.getStatus()) {
+  /**
+   * Parse geocoding response.
+   *
+   * @param response the response
+   * @return the geocoding result list
+   * @throws ServiceException if the status is not {@link GeocodingStatus#OK}
+   *                          or not {@link GeocodingStatus#ZERO_RESULTS}.
+   */
+  protected List<GeocodingResult> parseGeocodingResponse(final GeocodingResponse response) {
+    final GeocodingStatus status = response.getStatus();
+    switch (status) {
       case OK:
       case ZERO_RESULTS:
         return response.getResults();

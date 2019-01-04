@@ -27,31 +27,34 @@ import org.springframework.web.reactive.function.client.WebClient.Builder;
 import reactor.core.publisher.Flux;
 
 /**
+ * The reactive geocoding client.
+ *
  * @author Christian Bremer
  */
+@SuppressWarnings("unused")
 public class ReactiveGeocodingClientImpl extends AbstractReactiveClient
     implements ReactiveGeocodingClient {
 
   /**
-   * Instantiates a new abstract client.
+   * Instantiates a new reactive geocoding client.
    *
    * @param properties the properties
    */
-  public ReactiveGeocodingClientImpl(GoogleMapsProperties properties) {
+  public ReactiveGeocodingClientImpl(final GoogleMapsProperties properties) {
     super(properties,
         null,
         new ReactiveErrorDecoder());
   }
 
   /**
-   * Instantiates a new abstract client.
+   * Instantiates a new reactive geocoding client.
    *
-   * @param properties the properties
+   * @param properties       the properties
    * @param webClientBuilder the web client builder
    */
   public ReactiveGeocodingClientImpl(
-      GoogleMapsProperties properties,
-      Builder webClientBuilder) {
+      final GoogleMapsProperties properties,
+      final Builder webClientBuilder) {
     super(properties,
         webClientBuilder,
         new ReactiveErrorDecoder());

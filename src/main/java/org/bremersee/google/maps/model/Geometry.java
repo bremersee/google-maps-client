@@ -40,6 +40,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
+@SuppressWarnings("WeakerAccess")
 public class Geometry {
 
   /**

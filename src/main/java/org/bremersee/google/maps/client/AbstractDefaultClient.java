@@ -38,6 +38,7 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public class AbstractDefaultClient extends AbstractClient {
 
   @Getter(AccessLevel.PROTECTED)
@@ -56,13 +57,14 @@ public class AbstractDefaultClient extends AbstractClient {
   /**
    * Call the url.
    *
-   * @param <T> the type of the response
-   * @param url the url
-   * @param httpMethod the http method
-   * @param requestBody the request body
+   * @param <T>           the type of the response
+   * @param url           the url
+   * @param httpMethod    the http method
+   * @param requestBody   the request body
    * @param responseClass the response class
    * @return the response
    */
+  @SuppressWarnings("SameParameterValue")
   protected <T> T call(
       final URL url,
       final HttpMethod httpMethod,
@@ -137,6 +139,7 @@ public class AbstractDefaultClient extends AbstractClient {
   /**
    * The supported http methods.
    */
+  @SuppressWarnings("unused")
   protected enum HttpMethod {
 
     /**

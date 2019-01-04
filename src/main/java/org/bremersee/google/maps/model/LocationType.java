@@ -21,6 +21,7 @@ package org.bremersee.google.maps.model;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("unused")
 public enum LocationType {
 
   /**

@@ -19,10 +19,19 @@ package org.bremersee.google.maps.client;
 import org.bremersee.google.maps.model.GeocodingRequest;
 
 /**
+ * The geocoding client interface.
+ *
+ * @param <R> the response type
  * @author Christian Bremer
  */
 public interface GeocodingClient<R> {
 
+  /**
+   * Makes a geocoding request.
+   *
+   * @param geocodingRequest the geocoding request
+   * @return the response
+   */
   R geocode(GeocodingRequest geocodingRequest);
 
 }

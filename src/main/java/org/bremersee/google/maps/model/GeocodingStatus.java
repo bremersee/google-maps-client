@@ -23,6 +23,7 @@ import lombok.Getter;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("unused")
 public enum GeocodingStatus {
 
   /**

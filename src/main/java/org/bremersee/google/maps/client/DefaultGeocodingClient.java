@@ -26,8 +26,11 @@ import org.bremersee.google.maps.model.GeocodingResult;
 import org.springframework.util.MultiValueMap;
 
 /**
+ * The default geocoding client.
+ *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public class DefaultGeocodingClient extends AbstractDefaultClient
     implements TraditionalGeocodingClient {
 
@@ -43,7 +46,7 @@ public class DefaultGeocodingClient extends AbstractDefaultClient
   /**
    * Instantiates a new default geocoding client.
    *
-   * @param properties the properties
+   * @param properties   the properties
    * @param objectMapper the object mapper
    */
   public DefaultGeocodingClient(

@@ -26,6 +26,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.util.StringUtils;
 
 /**
  * Test of the default geocoding client.
@@ -43,6 +44,26 @@ public class DefaultGeocodingClientTest extends Setup {
   public static void init() {
     setup();
     geocodingClient = new DefaultGeocodingClient(properties, objectMapper);
+  }
+
+  /**
+   * Test geocode.
+   */
+  @Ignore
+  @Test
+  public void testGeocode() {
+    if (!StringUtils.hasText(properties.getKey())) {
+      return;
+    }
+
+    final GeocodingRequest req = GeocodingRequest
+        .builder()
+        .language(Locale.GERMANY)
+        .query("Hauptstraße 56, Peine")
+        .build();
+
+    final List<GeocodingResult> res = geocodingClient.geocode(req);
+    Assert.assertNotNull(res);
   }
 
   /**

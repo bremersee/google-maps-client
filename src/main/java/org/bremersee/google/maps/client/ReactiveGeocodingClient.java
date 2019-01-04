@@ -20,8 +20,11 @@ import org.bremersee.google.maps.model.GeocodingResult;
 import reactor.core.publisher.Flux;
 
 /**
+ * The reactive geocoding client interface.
+ *
  * @author Christian Bremer
  */
+@SuppressWarnings("WeakerAccess")
 public interface ReactiveGeocodingClient extends GeocodingClient<Flux<GeocodingResult>> {
 
 }

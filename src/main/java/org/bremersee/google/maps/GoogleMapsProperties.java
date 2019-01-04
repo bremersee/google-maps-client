@@ -28,7 +28,7 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess"})
 public class GoogleMapsProperties {
 
   public static final String DEFAULT_GEOCODE_URI = "https://maps.googleapis.com/maps/api/geocode/json";

@@ -40,7 +40,7 @@ abstract class AbstractRequest {
   /**
    * Encode query parameter.
    *
-   * @param value the parameter value
+   * @param value  the parameter value
    * @param encode if {@code true} the parameter will be url encoded, otherwise not
    * @return the (encoded) parameter value
    */

@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("unused")
 public enum AddressComponentType {
 
   /**
@@ -109,14 +110,29 @@ public enum AddressComponentType {
    */
   SUBLOCALITY("sublocality"),
 
+  /**
+   * Sublocality level 1 address component type.
+   */
   SUBLOCALITY_LEVEL_1("sublocality_level_1"),
 
+  /**
+   * Sublocality level 2 address component type.
+   */
   SUBLOCALITY_LEVEL_2("sublocality_level_2"),
 
+  /**
+   * Sublocality level 3 address component type.
+   */
   SUBLOCALITY_LEVEL_3("sublocality_level_3"),
 
+  /**
+   * Sublocality level 4 address component type.
+   */
   SUBLOCALITY_LEVEL_4("sublocality_level_4"),
 
+  /**
+   * Sublocality level 5 address component type.
+   */
   SUBLOCALITY_LEVEL_5("sublocality_level_5"),
 
   /**
@@ -374,11 +390,22 @@ public enum AddressComponentType {
     this.addressComponentType = addressComponentType;
   }
 
+  /**
+   * Gets value.
+   *
+   * @return the value
+   */
   @JsonValue
   public String getValue() {
     return addressComponentType;
   }
 
+  /**
+   * From value address component type.
+   *
+   * @param value the value
+   * @return the address component type
+   */
   @JsonCreator
   public static AddressComponentType fromValue(String value) {
     for (final AddressComponentType type : AddressComponentType.values()) {

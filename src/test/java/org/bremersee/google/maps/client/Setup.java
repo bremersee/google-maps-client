@@ -30,8 +30,14 @@ import org.bremersee.google.maps.GoogleMapsProperties;
  */
 abstract class Setup {
 
+  /**
+   * The properties.
+   */
   static GoogleMapsProperties properties;
 
+  /**
+   * The object mapper.
+   */
   static final ObjectMapper objectMapper = new ObjectMapper();
 
   /**
@@ -40,7 +46,6 @@ abstract class Setup {
   static void setup() {
     properties = new GoogleMapsProperties();
     properties.setKey(System.getProperty("googleMapsKey"));
-    //properties.setKey("foobar");
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     objectMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
     objectMapper.registerModules(

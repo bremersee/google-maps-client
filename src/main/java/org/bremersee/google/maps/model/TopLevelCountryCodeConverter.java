@@ -46,7 +46,7 @@ abstract class TopLevelCountryCodeConverter {
    * @param locale the locale
    * @return the top level country code
    */
-  static String fromLocale(Locale locale) {
+  static String fromLocale(final Locale locale) {
     if (locale == null || !StringUtils.hasText(locale.getCountry())) {
       return null;
     }
