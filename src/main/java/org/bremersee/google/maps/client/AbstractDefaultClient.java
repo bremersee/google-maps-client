@@ -104,7 +104,7 @@ public class AbstractDefaultClient extends AbstractClient {
           final RestApiException restApiException = new RestApiException();
           restApiException.setErrorCode(ErrorCodeConstants.GENERAL_REQUEST_ERROR);
           restApiException.setMessage(message);
-          restApiException.setRequestPath(url.getPath());
+          restApiException.setPath(url.getPath());
           throw new HttpClientException(
               statusCode,
               "Calling remote api failed.",
